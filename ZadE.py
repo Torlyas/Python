@@ -12,28 +12,19 @@ if n <= 100 and n > 0:
         el = int(el)
         if el<0 or el>10:
             correct = False
+
     if len(tab) == n and correct:
-        bloczek = []
-        bloki = []
-        index = 0
-        while index < n-1:
-            if tab[index] == tab[index + 1]:
-                same = True
-                while same:
-                    bloczek.append(tab[index])
-                    if index < n-1:
-                        if tab[index] != tab[index+1]:
-                            same = False
-                        index+=1
-                index+=1
+        m = 0
+        licznik = 0
+        for i in range(1, len(tab)):
+            if tab[i] == tab[i-1]:
+                licznik += 1
+                if licznik > m:
+                    m = licznik
             else:
-                index+=1 #index = index+1
-            if len(bloczek) != 0:
-                bloki.append(bloczek)
-                print(bloczek)
-                print(bloki)
-                bloczek.clear()
-        print(bloki)
+                licznik = 0
+        m += 1
+        print(m)
     else:
         print("Zla ilosc elementow lub nie odpowiednia liczba")
 else:
